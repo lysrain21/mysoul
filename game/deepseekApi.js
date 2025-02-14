@@ -13,9 +13,28 @@ let messages = [];
     ].join('\n')
   };
 
+function showPopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'flex';
+
+  document.getElementById('close-popup').addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+  document.getElementById('button1').addEventListener('click', async () => {
+    await connectMetamask();
+  });
+  
+  document.getElementById('button2').addEventListener('click', async () => {
+    await claimTokens();
+  });
+  
+  document.getElementById('button3').addEventListener('click', async () => {
+    await claimNft();
+  });
+}
+
 function callDeepSeekApi(question) {
-
-
+  
   messages.push(systemMessage, { role: 'user', content: question });
   
   // 显示加载层
@@ -25,7 +44,7 @@ function callDeepSeekApi(question) {
   const options = {
     method: 'POST',
     headers: {
-      Authorization: 'Bearer sk-joptxsgnkejgvjmdkhojwtdmxgjjhtvujzvnkfafcfqjuqly',
+      Authorization: 'your api key', // 请替换为您的API Key
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -53,6 +72,27 @@ function callDeepSeekApi(question) {
       messages.push({ role: 'assistant', content: aiResponse });
       // 将AI返回的结果打印到前端页面
       document.getElementById('response').value = aiResponse;
+
+      
+      if (question === "开始") {
+        // 启用 ABCD 和 结束按钮
+        document.getElementById('optionA').disabled = false;
+        document.getElementById('optionB').disabled = false;
+        document.getElementById('optionC').disabled = false;
+        document.getElementById('optionD').disabled = false;
+        document.getElementById('end').disabled = false;
+        document.getElementById('start').disabled = true;
+      } else if (question === "结束") {
+        // 禁用 ABCD 和 结束按钮
+        document.getElementById('optionA').disabled = true;
+        document.getElementById('optionB').disabled = true;
+        document.getElementById('optionC').disabled = true;
+        document.getElementById('optionD').disabled = true;
+        document.getElementById('end').disabled = true;
+        // 显示弹窗
+        showPopup();
+      }
+
       // 隐藏加载层
       loadingEl.style.display = 'none';
     })
@@ -65,7 +105,14 @@ function callDeepSeekApi(question) {
 
 // 修改提交按钮事件，点击按钮时直接传递“开始”
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('submit').addEventListener('click', () => {
+  // 默认禁用 ABCD 和 结束按钮
+  document.getElementById('optionA').disabled = true;
+  document.getElementById('optionB').disabled = true;
+  document.getElementById('optionC').disabled = true;
+  document.getElementById('optionD').disabled = true;
+  document.getElementById('end').disabled = true;
+
+  document.getElementById('start').addEventListener('click', () => {
     callDeepSeekApi("开始");
   });
 

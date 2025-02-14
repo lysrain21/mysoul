@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Added for responsiveness -->
+    <title>Game Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>
+        <img src="icon/游戏机.png" alt="Start" class="icon">
+        Game Demo
+    </h1>
+    <div class="container">
+        <div class="button-container">
+            <button id="start">
+                <img src="icon/开始.png" alt="Start" class="icon">
+                开始
+            </button>
+            <button id="end">
+                <img src="icon/结束.png" alt="End" class="icon">
+                结束
+            </button>
+        </div>
+        <br>
+        <label for="response">结果:</label>
+        <textarea id="response" rows="10" cols="50" readonly></textarea>
+        <div class="options">
+            <button class="option" id="optionA">
+                <img src="icon/A.png" alt="A" class="icon">
+            </button>
+            <button class="option" id="optionB">
+                <img src="icon/B.png" alt="B" class="icon">
+            </button>
+            <button class="option" id="optionC">
+                <img src="icon/C.png" alt="C" class="icon">
+            </button>
+            <button class="option" id="optionD">
+                <img src="icon/D.png" alt="D" class="icon">
+            </button>
+        </div>
+    </div>
+    <!-- 新增弹窗 -->
+    <div id="popup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <p>模型返回结果</p>
+            <button id="button1">connect metamask</button>
+            <button id="button2">claimTokens</button>
+            <button id="button3">claimNft</button>
+        </div>
+    </div>
+    <!-- 新增加载层 -->
+    <div id="loading" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color: rgba(0,0,0,0.5);color:#00ff00;font-size:2em;align-items:center;justify-content:center;">
+      加载中...
+    </div>
+    <!-- 将脚本标签放在body的末尾，确保元素已经加载完毕 -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <script src="blockchain.js"></script>
+    <script src="deepseekApi.js"></script>
+</body>
+</html>

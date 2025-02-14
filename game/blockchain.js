@@ -47,4 +47,7 @@ if (typeof ethers === "undefined") {
     } catch (error) {
       console.error("claimNft error:", error);
     }
+  window.connectMetamask = connectMetamask;
+  window.claimTokens = claimTokens;
+  window.claimNft = claimNft;
   }
