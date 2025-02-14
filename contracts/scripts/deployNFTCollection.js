@@ -18,7 +18,7 @@ async function main() {
   const greeter = await Greeter.deploy(
       "Runner",
       "RUN",
-      "https://ipfs.io/ipfs/QmTCsMc4vjxTSx4vfBz8ZDaugvF3XGcdWuxcN8HN8CobJ6/"
+      "https://ipfs.io/ipfs/QmTCsMc4vjxTSx4vfBz8ZDaugvF3XGcdWuxcN8HN8CobJ6/"//需要修嘎的ipfs地址，pinata
   );
 
   await greeter.deployed();

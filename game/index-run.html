@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>炫酷按钮页面</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(45deg, #ff0099, #493240);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="btn-container">
+    <button class="button1" onclick="claimNft()">Claim nft</button>
+    <button class="button2" onclick="claimTokens()">Claim tokens</button>
+    <button class="button3" onclick="connectMetamask()">Connect metamask</button>
+  </div>
+  <!-- 通过可靠的 CDN 加载 ethers 库，确保先加载 ethers -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" type="application/javascript"></script>
+  <!-- 加载 blockchain.js 文件 -->
+  <script src="blockchain.js"></script>
+</body>
+</html>
